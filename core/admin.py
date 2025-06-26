@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import comments
+from .models import Comments
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.admin import GroupAdmin as BaseGroupAdmin
 from django.contrib.auth.models import User, Group
@@ -29,6 +29,6 @@ class GroupAdmin(BaseGroupAdmin, UnfoldModelAdmin):
     pass
 
 
-@admin.register(comments)
+@admin.register(Comments)
 class CommentAdmin(UnfoldModelAdmin):
     list_display=('id', 'message')

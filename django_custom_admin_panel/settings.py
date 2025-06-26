@@ -147,7 +147,7 @@ from django.urls import reverse_lazy
 from django.utils.translation import gettext_lazy as _
 
 UNFOLD = {
-    "SITE_TITLE": "<title>Custom Admin</title>",
+    "SITE_TITLE": "Custom Admin",
     "SITE_HEADER": "Appears in sidebar at the top",
     "SITE_SUBHEADER": "Appears under SITE_HEADER",
     "SITE_DROPDOWN": [
@@ -226,7 +226,7 @@ UNFOLD = {
         "show_all_applications": True,  # Dropdown with all applications and models
         "navigation": [
             {
-                "title": _("Navigation"),
+                # "title": _("Navigation"),
                 "separator": True,  # Top border
                 "collapsible": True,  # Collapsible group of links
                 "items": [
@@ -234,8 +234,14 @@ UNFOLD = {
                         "title": _("Dashboard"),
                         "icon": "dashboard",  # Supported icon set: https://fonts.google.com/icons
                         "link": reverse_lazy("admin:index"),
-                        "badge": "sample_app.badge_callback",
+                        # "badge": "sample_app.badge_callback",
                         "permission": lambda request: request.user.is_superuser,
+                    },
+                    {
+                        "title": _("Comments"),
+                        "icon": "mark_unread_chat_alt",  # Supported icon set: https://fonts.google.com/icons
+                        "link": reverse_lazy("admin:core_comments_changelist"),
+                        "permission": lambda request: request.user.is_authenticated,
                     },
                   
                 ],
